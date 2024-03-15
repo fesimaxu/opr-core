@@ -41,8 +41,9 @@ db.sync({alter: true})
   });
 
 
-
-
 app.listen(APP_PORT, () => {
     console.log(`App running on port ${APP_PORT}`)
 })
+
+
+export default app;
