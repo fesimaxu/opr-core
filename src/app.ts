@@ -5,8 +5,11 @@ import { HttpError } from "http-errors";
 import dotenv from "dotenv";
 import { db } from "./config/db";
 import config from "./config/db/dbConfig"
-dotenv.config();
+import errorHandler from "./middleware/errorHandler";
+import UserRoutes from "./routes/index";
+import { BASE_URL } from "./utils/endpoints";
 
+dotenv.config();
 const { PORT } = config;
 
 // Server Initialization
@@ -21,7 +24,12 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 
+// Routes
+app.use(BASE_URL, UserRoutes);
 
+
+// Error Handling
+app.use(errorHandler);
 
 // Database Connection
 db.sync({alter: true})
