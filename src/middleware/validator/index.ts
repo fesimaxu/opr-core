@@ -5,7 +5,7 @@ import { sendErrorResponse } from "../../utils/response";
 export * from "./inputValidator";
 
 // validate input
-export const validator = (req: Request, res: Response, next: NextFunction) => {
+export const dataValidator = (req: Request, res: Response, next: NextFunction) => {
   const error = validationResult(req).array();
   if (error.length) {
     return sendErrorResponse(res, 400, { error: error[0].msg });

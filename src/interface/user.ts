@@ -6,3 +6,9 @@ export interface IUser {
     phoneNumber: string;
     registrationDate: string;
 }
+
+
+export interface IOTP {
+    userId: string;
+    otp: string;
+}
